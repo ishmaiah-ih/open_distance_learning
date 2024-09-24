@@ -13,10 +13,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
-        if ($user->isInstructor()) {
-            return redirect()->route('/')->with('error', 'Access denied: Instructors cannot view this page.');
-        }
+//        $user = auth()->user();
+//        if ($user->isInstructor()) {
+//            return redirect()->route('/')->with('error', 'Access denied: Instructors cannot view this page.');
+//        }
         // Fetch the logged-in student's ID
         $student_id = auth()->user()->id;
 
@@ -36,12 +36,12 @@ class DashboardController extends Controller
 //course details
     public function show($id)
     {
-        $user = auth()->user();
+//        $user = auth()->user();
 
         // Redirect instructors away from student-specific pages
-        if ($user->isInstructor()) {
-            return redirect()->route('/')->with('error', 'Access denied: Instructors cannot view this page.');
-        }
+//        if ($user->isInstructor()) {
+//            return redirect()->route('/')->with('error', 'Access denied: Instructors cannot view this page.');
+//        }
 
         // Fetch the course using the $id from the URL or request
         $course = Course::with('instructor')->findOrFail($id);

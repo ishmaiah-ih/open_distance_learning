@@ -19,7 +19,7 @@ class AssignmentController extends Controller
 
         // Validate the request
         $request->validate([
-            'assignment_file.*' => 'required|file|mimes:pdf,doc,docx|max:2048', // Adjust file types and size as needed
+            'assignment_file.*' => 'required|file|mimes:pdf,doc,docx,ppt,pptx|max:5000',
         ]);
 
         // Fetch the course to get the instructor
@@ -37,7 +37,7 @@ class AssignmentController extends Controller
             StudentUpload::create([
                 'student_id' => $user->id,
                 'instructor_id' => $instructorId, // Set the instructor ID here
-                'resource_id' => $assignmentId,
+                'resource_id' => $course,
                 'assignment_title' => $file->getClientOriginalName(),
                 'file' => $path,
                 'upload_date' => now(),
@@ -54,4 +54,37 @@ class AssignmentController extends Controller
         $course = Course::find($courseId);
         return $course ? $course->instructor_id : null;
     }
+
+
+//    public function viewAssignments()
+//    {
+//        1
+        // Get the logged-in instructor's ID
+//        $instructorId = auth()->id();
+//
+//        // Get all courses taught by the instructor
+//        $courses = Course::where('instructor_id', $instructorId)->pluck('id');
+//
+//        // Get all assignments submitted for the instructor's courses
+//        $submissions = StudentUpload::whereIn('resource_id', $courses)
+//            ->with('user') // Assuming 'user' is the relationship to the Student model
+//            ->get();
+//
+//        return view('admin.assignments', compact('submissions'));
+
+//        2
+//        $submissions = StudentUpload::with('user')->where('instructor_id', auth()->user()->id)->get();
+//
+//        return view('admin.assignments', compact('submissions'));
+//    }
+
+    public function viewAssignments()
+    {
+        $submissions = StudentUpload::with(['user', 'course']) // Eager load user and course
+        ->where('instructor_id', auth()->id()) // Adjust as needed
+        ->get();
+
+        return view('admin.assignments', compact('submissions'));
+    }
+
 }

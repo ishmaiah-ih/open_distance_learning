@@ -108,12 +108,9 @@ class AdminDashboard extends Controller
     }
 
 
-
 //    courses
-    public function showResources()
-    {
-        $modules = Course::paginate(10);
-        return view('admin.courses', compact('modules'));
-    }
+
+
+
 
 }

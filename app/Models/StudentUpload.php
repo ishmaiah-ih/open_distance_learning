@@ -34,6 +34,14 @@ class StudentUpload extends Model
             ->where('student_id', $studentId)
             ->exists();
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'student_id'); // Assuming 'student_id' is the foreign key
+    }
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'resource_id'); // Assuming resource_id is the foreign key for the course
+    }
 
 
 }

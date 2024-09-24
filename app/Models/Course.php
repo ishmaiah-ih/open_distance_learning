@@ -26,7 +26,10 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'student_courses')->withPivot('assigned_at');
     }
-
+    public function uploads()
+    {
+        return $this->hasMany(StudentUpload::class, 'resource_id'); // Assuming resource_id is the foreign key
+    }
 
 
 

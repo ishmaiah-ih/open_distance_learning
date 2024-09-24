@@ -1,5 +1,5 @@
 @extends('admin.common')
-@section('title', 'Students | E-HuB')
+@section('title', 'Students-Courses | E-HuB')
 @section('content')
 
     <div class="row">
@@ -7,10 +7,10 @@
 
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4>
-                    Student's List
+                    Students-Courses List
                 </h4>
-                <a href="{{route('student.add')}}" class="btn btn-primary">
-                    Add Student
+                <a href="{{route('addStudentCourse')}}" class="btn btn-primary">
+                    Add Student to Course
                 </a>
             </div>
 
@@ -19,42 +19,35 @@
                     {{ session('success') }}
                 </div>
             @endif
+
             <div class="p-2">
                 <table class="table table-bordered table-striped table-hover mb-0">
                     <thead class="align-bottom">
                     <tr>
-
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Reg #</th>
-                        <th>Program</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        {{--                            <th>Year</th>--}}
+                        <th>ID</th>
+                        <th>Student Name</th>
+                        <th>Course Name</th>
+                        <th>Assigned At</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody class="text-center">
-                    @foreach($students as $student)
+                    @foreach($studentCourses as $studCos)
                         <tr>
-                            <td>{{ $student->id }}</td>
-                            <td>{{ $student->name}}</td>
-                            <td>{{ $student->reg}}</td>
-                            <td>{{ $student->program}}</td>
-                            <td>{{ $student->email}}</td>
-                            <td>{{ $student->phone}}</td>
-                            {{--                                <td>{{ $student->year}}</td>--}}
-
+                            <td>{{ $studCos->id }}</td>
+                            <td>{{ $studCos->student_name }}</td>
+                            <td>{{ $studCos->course_name }}</td>
+                            <td>{{ $studCos->assigned_at }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a href="" class="text-primary me-1 btn btn-primary text-white">
+                                    <a href="#" class="text-primary me-1 btn btn-primary text-white">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <form action="{{route('student.delete', $student->id)}}" method="POST">
+                                    <form action="{{ route('student.course.delete', $studCos->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger ml-2"
-                                                onclick="return confirm('Are you sure you want to delete this customer?')">
+                                                onclick="return confirm('Are you sure you want to delete this record?')">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
@@ -66,13 +59,9 @@
                 </table>
 
                 <!-- Pagination Links -->
-                <div class="d-flex justify-content-center mt-4">
-                    {{--                        {{ $customers->links() }}--}}
-                    {{ $students->links() }}
-
-
-                    {{--                        {{ $customers->links('pagination::bootstrap-4') }}--}}
-                </div>
+{{--                <div class="d-flex justify-content-center mt-4">--}}
+{{--                    {{ $studentCourses->links() }}--}}
+{{--                </div>--}}
             </div>
 
         </div>

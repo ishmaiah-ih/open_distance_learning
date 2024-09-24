@@ -37,23 +37,33 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{{route('courses')}}">
+                <a class="nav-link " href="{{route('courses.index')}}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-list text-lg "></i>
                     </div>
                     <span class="nav-link-text ms-1">Courses</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{route('student.courses')}}">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-list text-lg "></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Courses-Student</span>
+                </a>
+            </li>
+
 
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Manage</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+
+                <a class="nav-link" href="{{ route('admin.assignments.view') }}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-concierge-bell text-lg "></i>
                     </div>
-                    <span class="nav-link-text ms-1">Services</span>
+                    <span class="nav-link-text ms-1">Assignments</span>
                 </a>
             </li>
 
@@ -68,7 +78,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ request()->is('add_users.php') ? 'active text-white bg-gradient-primary' : '' }}" href="add_users.php">
+                <a class="nav-link {{ request()->is('profile.edit') ? 'active text-white bg-gradient-primary' : '' }}" href="{{route('profile.edit')}}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md  text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-user-edit text-lg "></i>
                     </div>

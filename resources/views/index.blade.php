@@ -43,7 +43,7 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-        <a class="btn-getstarted" href="{{route('register')}}">Get Started</a>
+        <a class="btn-getstarted" href="{{route('login')}}">LogIn</a>
     </div>
 </header>
 
@@ -62,7 +62,7 @@
             <h2 data-aos="fade-up" data-aos-delay="100">Education For A<br>Brighter Tomorrow</h2>
             <p data-aos="fade-up" data-aos-delay="200"></p>
             <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                <a href="{{route('login')}}" class="btn-get-started">Get Started</a>
+                <a href="{{route('register')}}" class="btn-get-started">Register</a>
             </div>
         </div>
     </section><!-- /Hero Section -->

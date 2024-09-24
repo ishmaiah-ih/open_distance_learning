@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\StudentCourseController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('index');
@@ -45,11 +48,33 @@ Route::middleware('auth')->group(function () {
     Route::get('/courses/{courseId}/assignments', [AssignmentController::class, 'show'])->name('assignments.show');
     Route::post('/courses/{course}/assignments/upload', [AssignmentController::class, 'uploadAssignment'])->name('assignments.upload');
 
-    Route::post('/courses/{courseId}/assignments/upload', [AssignmentController::class, 'upload'])->name('assignments.upload');
+    // In routes/web.php
+
+// Route to view all assignments for the logged-in instructor
+    Route::get('/admin/courses/assignments', [AssignmentController::class, 'viewAssignments'])
+        ->name('admin.assignments.view')
+        ->middleware('auth'); // Ensure the user is authenticated
+
+
+
 });
 
 //courses
 Route::get('/courses/{id}', [DashboardController::class, 'show'])->name('courses.details');
 
-Route::get('/courses/resources', [AdminDashboard::class, 'showResources'])->name('courses');
-Route::delete('/courses/{id}', [DashboardController::class, 'destroy'])->name('courses.delete');
+//admin course
+
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+//Route::get('/courses/add', [CourseController::class, 'create'])->name('addCourse');
+Route::get('/admin/courses/add', [CourseController::class, 'create'])->name('course.create');
+
+Route::post('/courses/store', [CourseController::class, 'store'])->name('courses.store');
+Route::get('/courses/edit/{id}', [CourseController::class, 'edit'])->name('courses.edit');
+Route::post('/courses/update/{id}', [CourseController::class, 'update'])->name('courses.update');
+Route::get('/courses/delete/{id}', [CourseController::class, 'delete'])->name('courses.delete');
+
+//student to courses
+Route::get('/student-courses', [StudentCourseController::class, 'index'])->name('student.courses');
+Route::delete('/student-course/{id}', [StudentCourseController::class, 'destroy'])->name('student.course.delete');
+Route::get('/add-student-course', [StudentCourseController::class, 'create'])->name('addStudentCourse');
+Route::post('/add-student-course', [StudentCourseController::class, 'store'])->name('storeStudentCourse');
