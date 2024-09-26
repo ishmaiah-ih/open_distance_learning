@@ -37,7 +37,31 @@ class CourseController extends Controller
             'instructor_id' => 'required|exists:users,id',
         ]);
 
-        // Store the new course
+        // Check if the course name already exists
+        $existingCourseName = DB::table('courses')
+            ->where('course_name', $request->course_name)
+            ->first();
+
+        // Check if the course code already exists
+        $existingCourseCode = DB::table('courses')
+            ->where('course_code', $request->course_code)
+            ->first();
+
+        // Prepare error messages
+        $errors = [];
+        if ($existingCourseName) {
+            $errors[] = 'Course with this name already exists.';
+        }
+        if ($existingCourseCode) {
+            $errors[] = 'Course with this code already exists.';
+        }
+
+        // If there are any errors, redirect back with error messages
+        if (!empty($errors)) {
+            return redirect()->back()->withErrors($errors);
+        }
+
+        // Store the new course if no duplicates are found
         DB::table('courses')->insert([
             'course_name' => $request->course_name,
             'course_code' => $request->course_code,
@@ -48,6 +72,8 @@ class CourseController extends Controller
 
         return redirect()->back()->with('success', 'Course added successfully.');
     }
+
+
 
     public function edit($id)
     {

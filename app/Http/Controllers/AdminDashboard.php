@@ -56,7 +56,7 @@ class AdminDashboard extends Controller
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('public/profile_pictures'), $fileName);
+            $file->move(public_path('storage/profile_pictures'), $fileName);
         }
 
         // Create the user
@@ -73,7 +73,7 @@ class AdminDashboard extends Controller
             'picture' => $fileName, // Store the file name or null
         ]);
 
-        // Redirect or return response
+        // Redirect
         return redirect()->back()->with('success', 'New Student has been registered');
     }
 

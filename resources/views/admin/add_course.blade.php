@@ -18,7 +18,7 @@
                         <!-- Course Name -->
                         <div class="mb-3">
                             <label for="course_name" class="form-label">Course Name</label>
-                            <input id="course_name" class="form-control" type="text" name="course_name" required />
+                            <input id="course_name" class="form-control" type="text" name="course_name" required/>
                             @error('course_name')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -27,7 +27,7 @@
                         <!-- Course Code -->
                         <div class="mb-3">
                             <label for="course_code" class="form-label">Course Code</label>
-                            <input id="course_code" class="form-control" type="text" name="course_code" required />
+                            <input id="course_code" class="form-control" type="text" name="course_code" required/>
                             @error('course_code')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror

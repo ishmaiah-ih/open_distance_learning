@@ -130,16 +130,7 @@
 <script src="../../backend/assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
 
 {{--flash message--}}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var successMessage = document.getElementById('success-message');
-        if(successMessage) {
-            setTimeout(function() {
-                successMessage.style.display = 'none';
-            }, 4000); // 4 seconds
-        }
-    });
-</script>
+
 
 </body>
 

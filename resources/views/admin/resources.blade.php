@@ -13,11 +13,8 @@
                         Add Resource
                     </a>
                 </div>
-                @if (session('success'))
-                    <div class="alert bg-gray-200 text-dark p-2 rounded-md mb-2 mt-2">
-                        {{ session('success') }}
-                    </div>
-                @endif
+
+                @include('admin.includes.flash')
                 <div class="card-body p-0">
                     <table class="table table-bordered table-striped table-hover mb-0">
                         <thead class="text-center">

@@ -35,8 +35,12 @@
                                 <td>{{ $course->instructor_name }}</td>
                                 <td>{{ $course->created_at }}</td>
                                 <td>
-                                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="{{ route('courses.delete', $course->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-sm btn-info">
+                                        <i class="fas fa-edit"></i> <!-- Edit icon -->
+                                    </a>
+                                    <a href="{{ route('courses.delete', $course->id) }}" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i> <!-- Delete icon -->
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

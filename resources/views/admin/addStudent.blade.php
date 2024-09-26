@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>
-                        Add Customer
+                        New Student
                         <a href="{{ route('students_all') }}" class="btn btn-primary float-end">
                             Back
                         </a>

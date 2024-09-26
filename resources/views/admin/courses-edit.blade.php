@@ -1,4 +1,4 @@
-<?php
+
 @extends('admin.common')
 @section('title', 'Edit Course | E-HUB')
 @section('content')
