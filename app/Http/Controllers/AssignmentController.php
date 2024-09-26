@@ -37,7 +37,7 @@ class AssignmentController extends Controller
             StudentUpload::create([
                 'student_id' => $user->id,
                 'instructor_id' => $instructorId, // Set the instructor ID here
-                'resource_id' => $courseIdn,
+                'resource_id' => $courseId,
                 'assignment_title' => $file->getClientOriginalName(),
                 'file' => $path,
                 'upload_date' => now(),
