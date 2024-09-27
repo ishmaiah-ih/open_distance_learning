@@ -8,8 +8,8 @@
                         document.write(new Date().getFullYear())
                     </script>,
                     made by
-                    <a href="#" class="font-weight-bold" target="_blank">Ishmael Integral</a>
-                    a computer engineer.
+                    <a href="#" class="font-weight-bold" target="_blank">Final Year </a>
+                   Students
                 </div>
             </div>
             <div class="col-lg-6">

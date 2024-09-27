@@ -1,5 +1,5 @@
 @if(session('success'))
-    <span id="success-message" class="alert alert-success alert-dismissible fade show my-3" role="alert">
+    <span id="success-message" class="alert alert-success alert-dismissible fade show my-1" role="alert">
 
         <p class="text-white">  {{ session('success') }}</p>
     </span>

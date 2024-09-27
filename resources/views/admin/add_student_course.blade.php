@@ -11,6 +11,7 @@
                         <a href="{{ route('student.courses') }}" class="btn btn-primary float-end">
                             Back
                         </a>
+
                         @include('admin.includes.flash')
                     </h4>
                 </div>
