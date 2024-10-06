@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('instructor_id');
             $table->unsignedBigInteger('course_id');
-            $table->enum('upload_type', ['book', 'assignment', 'lecture']); // Refers to type of resource
+            $table->enum('upload_type', ['book', 'assignment', 'lecture', 'audio', 'video']); // Refers to type of resource
             $table->string('file_name');   // Name of the uploaded file
             $table->string('file_path');   // Path where the file is stored
             $table->timestamp('upload_date')->useCurrent();

@@ -30,11 +30,11 @@
                             <td>{{ $submission->user->name }}</td>
                             <td>{{ optional($submission->course)->course_name ?? 'No Course' }}</td> <!-- Accessing the course name -->
                             <td>{{ $submission->created_at->format('Y-m-d H:i:s') }}</td>
-{{--                            <td>--}}
-{{--                                <a href="{{ Storage::url($submission->file) }}" target="_blank" class="btn btn-sm btn-info" title="View File">--}}
-{{--                                    <i class="fas fa-eye"></i>--}}
-{{--                                </a>--}}
-{{--                            </td>--}}
+                            <td>
+                                <a href="{{ Storage::url($submission->file) }}" target="_blank" class="btn btn-sm btn-info" title="View File">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
 
                             <td>
                                 @php
@@ -76,3 +76,4 @@
     </div>
 
 @endsection
+

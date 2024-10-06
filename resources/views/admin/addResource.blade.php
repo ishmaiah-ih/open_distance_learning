@@ -40,6 +40,8 @@
                                 <option value="assignment">Assignment</option>
                                 <option value="book">Book</option>
                                 <option value="lecture">Lecture</option>
+                                <option value="audio">Audio</option> <!-- New option for audio -->
+                                <option value="video">Video</option> <!-- New option for video -->
                             </select>
                             @error('upload_type')
                             <div class="text-danger">{{ $message }}</div>
@@ -58,7 +60,7 @@
                         <!-- File Upload -->
                         <div class="mb-3">
                             <label for="file_path" class="form-label">File Upload</label>
-                            <input id="file_path" class="form-control" type="file" name="file_path" accept="*/*" required/>
+                            <input id="file_path" class="form-control" type="file" name="file_path" accept="audio/*,video/*,.pdf,.doc,.docx,.ppt,.pptx,.txt,.epub,.mobi,.jpg,.jpeg,.png,.mp3,.mp4" required/>
                             @error('file_path')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
